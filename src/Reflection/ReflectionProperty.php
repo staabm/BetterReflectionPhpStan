@@ -675,7 +675,7 @@ class ReflectionProperty
             && ! $node->isPublicSet()
             && $node->isPublic()
             && (
-                ($modifiers & ReflectionPropertyAdapter::IS_READONLY)
+                ($modifiers & ReflectionPropertyAdapter::IS_READONLY_COMPATIBILITY)
                 || $this->getDeclaringClass()->isReadOnly()
             )
         ) {
