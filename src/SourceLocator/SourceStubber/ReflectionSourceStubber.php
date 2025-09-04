@@ -246,7 +246,7 @@ final class ReflectionSourceStubber implements SourceStubber
         if (!method_exists($reflection, 'getAttributes')) {
             return;
         }
-        $attributeReflections = method_exists($reflection, 'getAttributes') ? $reflection->getAttributes() : [];
+        $attributeReflections = $reflection->getAttributes();
         if ($attributeReflections === []) {
             return;
         }
