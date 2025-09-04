@@ -336,9 +336,9 @@ final class ReflectionSourceStubber implements SourceStubber
 
         foreach ($interfaces as $interfaceName) {
             if (
-                method_exists($classReflection, 'isEnum')
+                in_array($interfaceName, [BackedEnum::class, UnitEnum::class], true)
+                && method_exists($classReflection, 'isEnum')
                 && (method_exists($classReflection, 'isEnum') ? $classReflection->isEnum() : false)
-                && in_array($interfaceName, [BackedEnum::class, UnitEnum::class], true)
             ) {
                 continue;
             }
