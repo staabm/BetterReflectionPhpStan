@@ -175,6 +175,7 @@ trait ReflectionFunctionAbstract
         $this->attributes       = ReflectionAttributeHelper::createAttributes($this->reflector, $this, $node->attrGroups);
         $this->docComment       = GetLastDocComment::forNode($node);
         $this->couldThrow       = $this->computeCouldThrow($node);
+        $this->isGenerator      = $this->nodeIsOrContainsYield($node);
 
         $startLine = $node->getStartLine();
         if ($startLine === -1) {

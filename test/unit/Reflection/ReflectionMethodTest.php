@@ -921,4 +921,24 @@ PHP;
         self::assertNotNull($hookReflection);
         self::assertSame($isFinal, $hookReflection->isFinal());
     }
+
+    public function testIsGenerator(): void
+    {
+        $php = <<<'PHP'
+            <?php
+            class Foo
+            {
+                public function boo()
+                {
+                    yield;
+                }
+            }
+        PHP;
+
+        $reflector        = new DefaultReflector(new StringSourceLocator($php, $this->astLocator));
+        $classReflection  = $reflector->reflectClass('Foo');
+        $methodReflection = $classReflection->getMethod('boo');
+
+        self::assertTrue($methodReflection->isGenerator());
+    }
 }
