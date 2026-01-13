@@ -26,6 +26,12 @@ class ReflectionFunction implements Reflection
 {
     use ReflectionFunctionAbstract;
 
+    public const VARIADIC_FUNCTIONS = [
+        'func_get_args',
+        'func_get_arg',
+        'func_num_args',
+    ];
+
     public const CLOSURE_NAME = '{closure}';
 
     private bool $isStatic;
